@@ -1,0 +1,603 @@
+{% extends 'seller_profile.html' %}
+
+{% block seller_name %}
+{{seller_obj.name}}
+{% endblock seller_name %}
+
+<html lang="en">
+   {% block showhere %}
+<head>
+    <!-- Required for creating graphs -->
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <!--Chart js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Dashboard Try</title>
+    <style>
+      .animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 30s linear infinite;
+  display: inline-block;
+      font-size: 80px;
+      margin-right: 40px;
+     
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+    </style>
+</head>
+
+ 
+  
+  <body style="padding: 20px; margin-top: 20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-left">
+          <h3 class="animate-charcter" style="text-align: center;">Seller Dashboard</h3>
+        </div>
+      </div>
+    </div>
+<br><br>
+<h1>Overview of Seller Products</h1><br>
+  <div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block;">
+    <label style="font-size: 15px;"><b>Total Products</b></label><br>
+    <label style="color: black;">{{total_products}}</label>
+  </div>
+
+  <div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-left: 40px;">
+    <label style="font-size: 15px;"><b>Summer Items</b></label><br>
+    <label style="color: black;">{{summer_products}}</label>
+  </div>
+
+  <div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-left: 40px;">
+    <label style="font-size: 15px;"><b>Winter Items</b></label><br>
+    <label style="color: black;">{{winter_products}}</label>
+  </div>
+
+  <div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-left: 40px;">
+    <label style="font-size: 15px;"><b>Total Sales</b></label><br>
+    <label style="color: black;">₹{{total_sales}}</label>
+  </div>
+  <br><br>
+<br>
+<br>
+  <div style="height: 400px; width: 400px; display: inline-block;">
+
+      <div>
+          <canvas id="myChart1"></canvas>
+        </div>
+        
+  </div> 
+&emsp;&emsp;&emsp;&emsp;
+  <div style="height: 400px; width: 500px; display: inline-block; margin-left: 20px;">
+
+    <div>
+        <canvas id="myChart2"></canvas>
+    </div>
+      
+</div>
+<br>
+<br>
+<hr>
+<h1 style="text-align:center ;">Sales of Summer Items</h1><br>
+
+
+
+<br>
+
+<div style="height: 400px; width: 400px; margin-top: 20px;display: inline-block;">
+
+  <div>
+      <canvas id="myChart3"></canvas>
+  </div>
+    
+</div>
+
+<div style="height: 400px; width: 500px; display: inline-block; margin-left: 80px;">
+
+  <div>
+      <canvas id="myChart4"></canvas>
+  </div>
+    
+</div>
+<br><br><br><br>
+<div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-top: 40px; margin-left: 460px; ">
+  <label style="font-size: 15px;"><b>Total Sales</b></label><br>
+  <label style="color: black;">₹{{total_sales_summer}}</label>
+</div>
+<br><br>
+<hr>
+
+<h1 style="margin-left:370px;">Sales of Winter Items</h1><br>
+
+<br>
+
+<div style="height: 400px; width: 400px; margin-top: 20px;display: inline-block;">
+
+  <div>
+      <canvas id="myChart5"></canvas>
+  </div>
+    
+</div>
+
+<div style="height: 400px; width: 500px; display: inline-block; margin-left: 80px;">
+
+  <div>
+      <canvas id="myChart6"></canvas>
+  </div>
+  
+    
+</div>
+<br><br><br><br><br><br>
+<div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-top: 40px; margin-left: 460px;">
+  <label style="font-size: 15px;"><b>Total Sales</b></label><br>
+  <label style="color: black;">₹{{total_sales_winter}}</label>
+</div><br><div style="height:100px;"></div>
+        
+          <script>
+            const ctx1 = document.getElementById('myChart1');
+          
+            new Chart(ctx1, {
+              type: 'doughnut',
+              data: {
+                title: {
+                    display: true,
+                    text: 'Products Description',
+                },
+                labels: ['Mens', 'Womens' , 'Kids'],
+                datasets: [{
+                  label: 'Product Count',
+                  data: [{% for j in doghnut_data_all.values %}{{j}}, {% endfor %}],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+
+
+<script>
+  const ctx2 = document.getElementById('myChart2');
+
+  new Chart(ctx2, {
+    type: 'line',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: [{% for i in sales %}{{i.month}},{% endfor %}],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for i in sales %}{{i.the__count}},{% endfor %}],
+        // borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+        
+      }
+    }
+  });
+</script>
+
+<script>
+  const ctx3 = document.getElementById('myChart3');
+
+  new Chart(ctx3, {
+    type: 'doughnut',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: ['Mens', 'Womens' , 'Kids'],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for j in doghnut_data_summer.values %}{{j}}, {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
+<script>
+  const ctx4 = document.getElementById('myChart4');
+
+  new Chart(ctx4, {
+    type: 'line',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: [{% for i in sales_summer %}{{i.month}},{% endfor %}],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for i in sales_summer %}{{i.the__count}},{% endfor %}],
+        // borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  const ctx5 = document.getElementById('myChart5');
+
+  new Chart(ctx5, {
+    type: 'doughnut',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: ['Mens', 'Womens' , 'Kids'],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for j in doghnut_data_winter.values %}{{j}}, {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
+<script>
+  const ctx6 = document.getElementById('myChart6');
+
+  new Chart(ctx6, {
+    type: 'line',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: [{% for i in sales_winter %}{{i.month}},{% endfor %}],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for i in sales_winter %}{{i.the__count}},{% endfor %}],
+        // borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  });
+</script>
+    
+</body>
+
+
+
+  {% endblock showhere %}
+
+  <body style="padding: 20px;">
+
+  <div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block;">
+    <label style="font-size: 15px;"><b>Total Products</b></label><br>
+    <label style="color: black;">{{total_products}}</label>
+  </div>
+
+  <div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-left: 40px;">
+    <label style="font-size: 15px;"><b>Summer Items</b></label><br>
+    <label style="color: black;">{{summer_products}}</label>
+  </div>
+
+  <div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-left: 40px;">
+    <label style="font-size: 15px;"><b>Winter Items</b></label><br>
+    <label style="color: black;">{{winter_products}}</label>
+  </div>
+
+  <div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-left: 40px;">
+    <label style="font-size: 15px;"><b>Total Sales</b></label><br>
+    <label style="color: black;">₹{{total_sales}}</label>
+  </div>
+  <br><br>
+
+  <div style="height: 400px; width: 400px; display: inline-block; background-color: aliceblue;">
+
+      <div>
+          <canvas id="myChart1"></canvas>
+        </div>
+        
+  </div>
+
+
+  <div style="height: 400px; width: 500px; display: inline-block; background-color: aliceblue; margin-left: 20px;">
+
+    <div>
+        <canvas id="myChart2"></canvas>
+    </div>
+      
+</div>
+
+<div style="background-color: #D3D3D3; height: 40px; width:220px; text-align: center; padding: 10px; margin-top: 20px;">
+  <label style="font-size: 15px;"><b>Details of Summer Items</b></label><br>
+</div>
+
+<div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-top: 40px;">
+  <label style="font-size: 15px;"><b>Total Sales</b></label><br>
+  <label style="color: black;">₹{{total_sales_summer}}</label>
+</div>
+
+<br>
+
+<div style="height: 400px; width: 500px; background-color: aliceblue; margin-top: 20px;display: inline-block;">
+
+  <div>
+      <canvas id="myChart3"></canvas>
+  </div>
+    
+</div>
+
+<div style="height: 400px; width: 500px; display: inline-block; background-color: aliceblue; margin-left: 20px;">
+
+  <div>
+      <canvas id="myChart4"></canvas>
+  </div>
+    
+</div>
+
+<br><br><br>
+
+<br><br><br>
+
+<div style="background-color: #D3D3D3; height: 40px; width:220px; text-align: center; padding: 10px; margin-top: 20px;">
+  <label style="font-size: 15px;"><b>Details of Winter Items</b></label><br>
+</div>
+
+<div style="background-color: #D3D3D3; height: 60px; width:120px; text-align: center; padding: 10px; display: inline-block; margin-top: 40px;">
+  <label style="font-size: 15px;"><b>Total Sales</b></label><br>
+  <label style="color: black;">₹{{total_sales_winter}}</label>
+</div>
+
+<br>
+
+<div style="height: 400px; width: 500px; background-color: aliceblue; margin-top: 20px;display: inline-block;">
+
+  <div>
+      <canvas id="myChart5"></canvas>
+  </div>
+    
+</div>
+
+<div style="height: 400px; width: 500px; display: inline-block; background-color: aliceblue; margin-left: 20px;">
+
+  <div>
+      <canvas id="myChart6"></canvas>
+  </div>
+    
+</div>
+        
+          <script>
+            const ctx1 = document.getElementById('myChart1');
+          
+            new Chart(ctx1, {
+              type: 'doughnut',
+              data: {
+                title: {
+                    display: true,
+                    text: 'Products Description',
+                },
+                labels: ['Mens', 'Womens' , 'Kids'],
+                datasets: [{
+                  label: 'Product Count',
+                  data: [{% for j in doghnut_data_all.values %}{{j}}, {% endfor %}],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+
+
+<script>
+  const ctx2 = document.getElementById('myChart2');
+
+  new Chart(ctx2, {
+    type: 'line',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: [{% for i in sales %}{{i.month}},{% endfor %}],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for i in sales %}{{i.the__count}},{% endfor %}],
+        // borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  const ctx3 = document.getElementById('myChart3');
+
+  new Chart(ctx3, {
+    type: 'doughnut',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: ['Mens', 'Womens' , 'Kids'],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for j in doghnut_data_summer.values %}{{j}}, {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
+<script>
+  const ctx4 = document.getElementById('myChart4');
+
+  new Chart(ctx4, {
+    type: 'line',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: [{% for i in sales_summer %}{{i.month}},{% endfor %}],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for i in sales_summer %}{{i.the__count}},{% endfor %}],
+        // borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  const ctx5 = document.getElementById('myChart5');
+
+  new Chart(ctx5, {
+    type: 'doughnut',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: ['Mens', 'Womens' , 'Kids'],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for j in doghnut_data_winter.values %}{{j}}, {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
+<script>
+  const ctx6 = document.getElementById('myChart6');
+
+  new Chart(ctx6, {
+    type: 'line',
+    data: {
+      title: {
+          display: true,
+          text: 'Products Description',
+      },
+      labels: [{% for i in sales_winter %}{{i.month}},{% endfor %}],
+      datasets: [{
+        label: 'Product Count',
+        data: [{% for i in sales_winter %}{{i.the__count}},{% endfor %}],
+        // borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  });
+</script>
+    
+</body>
+
+</html>

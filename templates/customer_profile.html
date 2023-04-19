@@ -1,0 +1,205 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Profile</title>
+                                <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='#' rel='stylesheet'>
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <link rel="stylesheet" href="/static/navbar.css">
+    <link rel="stylesheet" href="/static/landing.css">
+    <link rel="stylesheet" href="/static/land.css">
+                               <style>::-webkit-scrollbar {
+                                  width: 8px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #f1f1f1; 
+                                }
+                                 
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: #888; 
+                                }
+                                
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: #555; 
+                                } body {
+    background: rgb(255, 255, 255)
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #d498de
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #ffffff
+}
+
+.profile-button:focus {
+    background: #ffffff;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #ffffff;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #ffffff;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}</style>
+                                </head>
+                                <body>
+                                    <div id="navbar">
+                                        <div>
+                                            <a href="/landing/"><img src="/media/images/logo.png" title="proo"></a>
+                                        </div>
+                                        
+                                        
+                                        <div id="products_page">
+                                            <div><a href="/mens/" style="color: black; text-decoration: none">MEN</a></div>
+                                            <div><a href="/women/" style="color: black; text-decoration: none">WOMEN</a></div>
+                                            <div><a href="/kids/" style="color: black; text-decoration: none">KIDS</a></div>
+                                        </div>
+                                        
+                                        <div>
+                                         
+                                        </div>
+                                        &emsp;&emsp;&emsp;&emsp;
+                                        <div >
+                                            <a href="/cart/"><img src="/media/images/cartt.png" alt="Profile Picture" ><a>
+                                          
+                                        </div>
+                                        &emsp;&emsp;
+                                        <div >
+                                            <a href="/customerProfile"><img src="/media/images/proh.png" alt="Profile Picture" ></a>
+                                        </div>
+
+                                        <div style="margin-left: -50px;">
+                                            <a href="/customerOrders"><img src="/media/images/shopping-bag.png" alt="Orders" ></a>
+                                        </div>
+                                        
+                                        </div>
+                                    </div>
+                                  
+                                <div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">{{request.user}}</span><span class="text-black-50">{{request.user.email}}</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value="{{request.user}}" disabled></div>
+                    <div class="col-md-6"><label class="labels">Last name</label><input type="text" class="form-control" value="{{request.user.last_name}}" placeholder="Last name" disabled></div>
+                </div>
+                <div class="row mt-3">
+                    
+                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value="{{request.user.email}}" disabled></div>
+                   
+                </div>
+                
+                <form action="/customerProfile/" method="post">
+                  <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Logout</button></div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+</div>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src="#"></script>
+                                <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+                                myLink.addEventListener('click', function(e) {
+                                  e.preventDefault();
+                                });</script>
+                                <div id="end-container">
+                                    <footer class="footer">
+                                        <div class="footer__addr">
+                                          <h1 class="footer__logo">One Stop</h1>
+                                              
+                                          <h2>Contact</h2>
+                                          
+                                          <address>
+                                            5534 Somewhere In. The World 22193-10212<br>
+                                                
+                                            <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+                                          </address>
+                                        </div>
+                                        
+                                        <ul class="footer__nav">
+                                          <li class="nav__item">
+                                            <h2 class="nav__title">Online Shopping</h2>
+                                      
+                                            <ul class="nav__ul">
+                                              <li>
+                                                <a href="/kids/">Kids</a>
+                                              </li>
+                                      
+                                              <li>
+                                                <a href="/mens/">Mens</a>
+                                              </li>
+                                                  
+                                              <li>
+                                                <a href="/women/">Women</a>
+                                              </li>
+                                            </ul>
+                                          </li>
+                                          
+                                          <li class="nav__item nav__item--extra">
+                                            <h2 class="nav__title">Customer Policies</h2>
+                                            
+                                            <ul class="nav__ul nav__ul--extra">
+                                              <li>
+                                                <a href="#">FAQ</a>
+                                              </li>
+                                              
+                                              <li>
+                                                <a href="#">Terms and conditions</a>
+                                              </li>
+                                              
+                                              <li>
+                                                <a href="#">Contact Us</a>
+                                              </li>
+                                              <li class="nav__item ">
+                                                </li>
+                                            
+                                            <div class="legal">
+                                              <p><br>&copy;2022 OneStop. All rights reserved.</p>
+                                              
+                                              <div class="legal__links">
+                                                <span>Made with <span class="heart">♥</span> OneStop</span>
+                                              </div>
+                            
+                                </body>
+                            </html>

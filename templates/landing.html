@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/navbar.css">
+    <link rel="stylesheet" href="/static/landing.css">
+    <link rel="stylesheet" href="/static/land.css">
+
+    <!-- For the alert message -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <div id="navbar">
+        <div>
+            <img src="/media/images/logo.png">
+        </div>
+        
+        
+        <div id="products_page">
+            <div><a href="/mens/" style="color: black; text-decoration: none">MEN</a></div>
+            <div><a href="/women/" style="color: black; text-decoration: none">WOMEN</a></div>
+            <div><a href="/kids/" style="color: black; text-decoration: none">KIDS</a></div>
+        </div>
+        
+        <div>
+         
+        </div>
+        &emsp;&emsp;&emsp;&emsp;
+        <div >
+            <a href="/cart"><img src="/media/images/cartt.png" alt="Profile Picture" ><a>
+          
+        </div>
+        &emsp;&emsp;
+        <div >
+            <a href="/customerProfile"><img src="/media/images/proh.png" alt="Profile Picture" ></a>
+        </div>
+        <div id="login_Status">
+        </div>
+    </div>
+
+    {% if messages %}
+                
+            {% for message in messages %}
+
+                    {% if message.tags == 'error' %} 
+                        <!--Added from w3schools-->
+                        <div class="alert alert-danger alert-dismissible fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{message}}</strong> 
+                        </div>
+                    {% endif %}
+            
+                    {% if message.tags == 'success' %} 
+                        <!--Added from w3schools-->
+                        <div class="alert alert-success alert-dismissible fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{message}}</strong> 
+                        </div>
+                    {% endif %}
+                    
+                {% endfor %}
+            
+        {% endif %}
+  
+    <div id="main-container">
+        <div id="home-pic">
+            <img class="image" src="https://assets.ajio.com/cms/AJIO/WEB/13062022-D-UHP-SK-Top-Banner.jpg" alt="home-pic">
+        </div>
+        <img class="image" src="https://assets.ajio.com/cms/AJIO/WEB/Paytm_1440x128-without%20CTA.jpg" alt="offers">
+        <div id="crauser_1">
+            <!-- append the crauser-1 here -->
+            <img id="image_url" src="https://assets.ajio.com/cms/AJIO/WEB/12062022-D-unisex-topbanner-p4-brands-startingat299.jpg" alt="">
+            <button class="prev"><</button>
+            <button class="next">></button>
+        </div>
+        <img class="image" src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/6/9/0bf2f455-f754-4b3a-b498-d4125428c7db1654785362720-Must-Haves-In-Your-Wardrobe.jpg" alt="must Have">
+        <div id="products_grid2">
+            <!-- add grid of sample products here -->
+        </div>
+        <img class="image" src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/6/10/8fd79f84-0aa6-4c11-850a-626bdc098f631654801550323-Unbelievable-Deals.jpg" alt="deals">
+        <div id="products_grid1">
+            <!-- add grid of sample products here -->
+        </div>
+        <div id="crauser_2">
+            <!-- append the crauser-2 here -->
+            <img id="image2_url" src="https://assets.ajio.com/cms/AJIO/WEB/14062022-D-unisex-topbannercarousel-p1-brands-min60.jpg" alt="">
+            <button class="prev1"><</button>
+            <button class="next1">></button>
+        </div>
+    </div>
+    <div id="end-container">
+      <footer class="footer">
+          <div class="footer__addr">
+            <h1 class="footer__logo">One Stop</h1>
+                
+            <h2>Contact</h2>
+            
+            <address>
+              5534 Somewhere In. The World 22193-10212<br>
+                  
+              <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+            </address>
+          </div>
+          
+          <ul class="footer__nav">
+            <li class="nav__item">
+              <h2 class="nav__title">Online Shopping</h2>
+        
+              <ul class="nav__ul">
+                <li>
+                  <a href="/kids/">Kids</a>
+                </li>
+        
+                <li>
+                  <a href="/mens/">Mens</a>
+                </li>
+                    
+                <li>
+                  <a href="/women/">Women</a>
+                </li>
+              </ul>
+            </li>
+            
+            <li class="nav__item nav__item--extra">
+              <h2 class="nav__title">Customer Policies</h2>
+              
+              <ul class="nav__ul nav__ul--extra">
+                <li>
+                  <a href="#">FAQ</a>
+                </li>
+                
+                <li>
+                  <a href="#">Terms and conditions</a>
+                </li>
+                
+                <li>
+                  <a href="#">Contact Us</a>
+                </li>
+                <li class="nav__item ">
+                  </li>
+              
+              <div class="legal">
+                <p><br>&copy;2022 OneStop. All rights reserved.</p>
+                
+                <div class="legal__links">
+                  <span>Made with <span class="heart">♥</span> OneStop</span>
+                </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneStop Sign-up</title>
+    <!-- For the alert message -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/signup.css">
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+    <div id="navbar">
+        <div id="left">
+            <div>
+                <a href="/">
+                    <img src="/media/images/logo.png">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% if messages %}
+                
+            {% for message in messages %}
+
+                    {% if message.tags == 'error' %} 
+                        <!--Added from w3schools-->
+                        <div class="alert alert-danger alert-dismissible fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{message}}</strong> 
+                        </div>
+                    {% endif %}
+            
+                    {% if message.tags == 'success' %} 
+                        <!--Added from w3schools-->
+                        <div class="alert alert-success alert-dismissible fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>{{message}}</strong> 
+                        </div>
+                    {% endif %}
+                    
+                {% endfor %}
+            
+        {% endif %}
+
+    <div id="signup_container">
+        <form method="post" action="/signup/">
+            {% csrf_token %}
+            <h2>Sign Up</h2>
+            <label for="">Username</label><br />
+            <input id="uname" name="uname" type="text" placeholder="Enter Username"><br />
+            <label for="" >Email</label><br />
+            <input id="email" name="email" type="email" placeholder="Enter Email"><br />
+            <label for="">Password</label><br />
+            <input id="pass" name='pass' type="password" placeholder="Enter Password"><br />
+    
+            <input type="submit" value="Sign up" name='btn_name'>
+            <p>Already have an account? <a href="/">Sign in</a></p>
+        </form>
+    </div>
+</body>
+</html>
